@@ -6,8 +6,6 @@ Just plug your android devices to machine and run tests.
 - Java.
 - ADT bundle.
 - Nodejs
-- Selenium-Webdriver java library.
-- Appium java client.
 
 ## Setup
 - Install java and set java path in system variable.
