@@ -22,7 +22,7 @@ Just plug your android devices to machine and run tests.
 - <code> info: Console LogLevel: debug </code>
 
 ## Try example
-- Download the appium_mutliple_android_devices.jar file
+- Download the [appium_mutliple_android_devices.jar](https://github.com/sameer49/Appium-Grid-For-Android/blob/master/appium_mutliple_android_devices.jar?raw=true) file
 - Connect one or more android devices.
 - Run jar <code>java -jar appium_mutliple_android_devices.jar</code>
 
