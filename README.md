@@ -24,4 +24,4 @@ Just plug your android devices to machine and run tests.
 ## Try example
 - Download the [gmail_example.jar](https://github.com/sameer49/Appium-Grid-For-Android/blob/examples/gmail_example.jar?raw=true) file
 - Connect one or more android devices.
-- Run jar <code>java -jar appium_mutliple_android_devices.jar</code>
+- Run jar <code>java -jar gmail_example.jar</code>
