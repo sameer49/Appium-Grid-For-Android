@@ -9,27 +9,24 @@ public class DeviceConfiguration {
 
 	Map<String, String> devices = new HashMap<String, String>();
 	
-	public Map<String, String> getDivces() throws Exception
-	{
+	public Map<String, String> getDivces() throws Exception	{
 		
 		CommandPrompt cmd = new CommandPrompt();
+		cmd.runCommand("adb devices");
 		String output = cmd.runCommand("adb devices");
 		//System.out.println(output);
 		String[] lines = output.split("\n");
 		//System.out.println(lines.length);
-		if(lines.length<=1)
-		{
+		if(lines.length<=1){
 			System.out.println("No device connected");
 			System.exit(0);
 		}
 		
-		for(int i=1;i<lines.length;i++)
-		{
+		for(int i=1;i<lines.length;i++){
 			lines[i]=lines[i].replaceAll("\\s+", "");
 			
-			if(lines[i].contains("device"))
-			{
-				System.out.println("Following device is connected");
+			if(lines[i].contains("device")){
+				//System.out.println("Following device is connected");
 				
 				lines[i]=lines[i].replaceAll("device", "");
 				String deviceID = lines[i];
@@ -38,16 +35,16 @@ public class DeviceConfiguration {
 				String osVersion = cmd.runCommand("adb -s "+deviceID+" shell getprop ro.build.version.release").replaceAll("\\s+", "");
 				String deviceName = brand+" "+model;
 				
-				System.out.println(deviceID);
+				//System.out.println(deviceID);
 				devices.put("deviceID"+i, deviceID);
 				
-				System.out.println(deviceName);
+				//System.out.println(deviceName);
 				devices.put("deviceName"+i, deviceName);
 				
-				System.out.println(osVersion);
+				//System.out.println(osVersion);
 				devices.put("osVersion"+i, osVersion);
 				
-				System.out.println();
+				//System.out.println();
 			}
 			else if(lines[i].contains("unauthorized"))
 			{
