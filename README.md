@@ -3,14 +3,14 @@ Allows you to run automation test on multiple android devices (Real/Emulator) si
 Just plug your android devices to machine and run tests.
 
 ## Requirements:
-- Java.
-- ADT bundle.
+- Java
 - Nodejs
+- Android SDK
 
 ## Setup
 - Install java and set java path in system variable.
 - Set ADT bundle path in system variable.
-- Install Nodejs set java path in system variable.
+- Install Nodejs and set path in system variable.
 
 ## Setting Appium server
 - Open command propmt/Terminal.
@@ -25,5 +25,3 @@ Just plug your android devices to machine and run tests.
 - Download the [appium_mutliple_android_devices.jar](https://github.com/sameer49/Appium-Grid-For-Android/blob/master/appium_mutliple_android_devices.jar?raw=true) file
 - Connect one or more android devices.
 - Run jar <code>java -jar appium_mutliple_android_devices.jar</code>
-
-## Modfying it according to requirements

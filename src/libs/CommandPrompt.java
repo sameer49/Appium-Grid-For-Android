@@ -8,8 +8,7 @@ public class CommandPrompt {
 	
 	Process p;
 	ProcessBuilder builder;
-	public String runCommand(String command) throws InterruptedException, IOException
-	{
+	public String runCommand(String command) throws InterruptedException, IOException{
 		// build cmd proccess
 		builder = new ProcessBuilder("cmd.exe","/c", command);
 		builder.redirectErrorStream(true);
@@ -19,14 +18,11 @@ public class CommandPrompt {
 		String line="";
 		String allLine="";
 		int i=1;
-		while((line=r.readLine()) != null)
-		{
+		while((line=r.readLine()) != null){
 	//		System.out.println(i+". "+line);
 			allLine=allLine+""+line+"\n";
-			//	System.out.println("allLine:"+allLine);
-			
 			if(line.contains("Console LogLevel: debug"))
-					break;
+				break;
 			i++;
 		}
 		return allLine;

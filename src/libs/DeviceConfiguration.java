@@ -12,11 +12,10 @@ public class DeviceConfiguration {
 	public Map<String, String> getDivces() throws Exception	{
 		
 		CommandPrompt cmd = new CommandPrompt();
-		cmd.runCommand("adb devices");
+		cmd.runCommand("adb devices"); // run command only to start adb tool
 		String output = cmd.runCommand("adb devices");
-		//System.out.println(output);
 		String[] lines = output.split("\n");
-		//System.out.println(lines.length);
+
 		if(lines.length<=1){
 			System.out.println("No device connected");
 			System.exit(0);
@@ -26,8 +25,6 @@ public class DeviceConfiguration {
 			lines[i]=lines[i].replaceAll("\\s+", "");
 			
 			if(lines[i].contains("device")){
-				//System.out.println("Following device is connected");
-				
 				lines[i]=lines[i].replaceAll("device", "");
 				String deviceID = lines[i];
 				String model = cmd.runCommand("adb -s "+deviceID+" shell getprop ro.product.model").replaceAll("\\s+", "");
@@ -35,39 +32,26 @@ public class DeviceConfiguration {
 				String osVersion = cmd.runCommand("adb -s "+deviceID+" shell getprop ro.build.version.release").replaceAll("\\s+", "");
 				String deviceName = brand+" "+model;
 				
-				//System.out.println(deviceID);
 				devices.put("deviceID"+i, deviceID);
-				
-				//System.out.println(deviceName);
 				devices.put("deviceName"+i, deviceName);
-				
-				//System.out.println(osVersion);
 				devices.put("osVersion"+i, osVersion);
 				
-				//System.out.println();
-			}
-			else if(lines[i].contains("unauthorized"))
-			{
-				System.out.println("Following device is unauthorized");
-				
+				System.out.println("Following device is connected");
+				System.out.println(deviceID+" "+deviceName+" "+osVersion+"\n");
+			}else if(lines[i].contains("unauthorized")){
 				lines[i]=lines[i].replaceAll("unauthorized", "");
 				String deviceID = lines[i];
 				
-				System.out.println(deviceID);
-				System.out.println();
-			}
-			else if(lines[i].contains("offline"))
-			{
-				System.out.println("Following device is offline");
-				
+				System.out.println("Following device is unauthorized");
+				System.out.println(deviceID+"\n");
+			}else if(lines[i].contains("offline")){
 				lines[i]=lines[i].replaceAll("offline", "");
 				String deviceID = lines[i];
 				
-				System.out.println(deviceID);
-				System.out.println();
+				System.out.println("Following device is offline");
+				System.out.println(deviceID+"\n");
 			}
 		}
-		
 		return devices;
 	}
 	
