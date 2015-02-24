@@ -21,7 +21,6 @@ public class BaseTest implements Runnable{
 	AppiumManager appiumMan = new AppiumManager();
 	static Map<String, String> devices = new HashMap<String, String>();
 	static DeviceConfiguration deviceConf = new DeviceConfiguration();
-	
 
 	public BaseTest(){
 		try {
@@ -32,7 +31,7 @@ public class BaseTest implements Runnable{
 		}
 	}
 	
-	public BaseTest(int i) {
+	public BaseTest(int i){
 		int deviceNumber = (i+1);
 		this.deviceId = devices.get("deviceID"+deviceNumber);
 		this.deviceName = devices.get("deviceName"+deviceNumber);
@@ -40,17 +39,9 @@ public class BaseTest implements Runnable{
 		setup();
 	}
 	
-	public void setup()
-	{
-		System.out.println("In basetest setup");
-		try
-		{
-//			System.out.println("Device ID: "+deviceId);
-//			System.out.println("Device name: "+deviceName);
-//			System.out.println("Device OS: "+osVersion);
-	
-			// Start appium server			  
-			String port = appiumMan.startAppium();
+	public void setup(){
+		try	{
+			String port = appiumMan.startAppium(); 			// Start appium server			  
 			  
 			// create appium driver instance
 			DesiredCapabilities capabilities = DesiredCapabilities.android();
@@ -61,24 +52,20 @@ public class BaseTest implements Runnable{
 			//capabilities.setCapability("app", "D:\\work\\Appium-Grid-For-Android\\src\\AndroidCalculator.apk");
 			capabilities.setCapability("udid", deviceId);
 				
-			//driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 			driver = new AndroidDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
 		}
-		catch(Exception e)
-	    {
+		catch(Exception e){
 	    	e.printStackTrace();
 	    }
 	}
 	
-	public void start()
-	{
-	   if (t == null)
-	   {
+	public void start(){
+	   if (t == null){
 	      t = new Thread(this);
 	      t.start ();
 	   }
 	}
 
-	public void run() {
+	public void run(){
 	}
 }
