@@ -17,8 +17,8 @@ public class DeviceConfiguration {
 		String[] lines = output.split("\n");
 
 		if(lines.length<=1){
-			System.out.println("No device connected");
-			System.exit(0);
+			System.out.println("No Device Connected");
+			System.exit(0);	// exit if no connected devices found
 		}
 		
 		for(int i=1;i<lines.length;i++){

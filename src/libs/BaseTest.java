@@ -15,6 +15,7 @@ public class BaseTest implements Runnable{
 	protected String deviceId;
 	protected String deviceName;
 	protected String osVersion;
+	protected String port;
 	protected Thread t;
 	protected int deviceCount;
 	
@@ -36,12 +37,11 @@ public class BaseTest implements Runnable{
 		this.deviceId = devices.get("deviceID"+deviceNumber);
 		this.deviceName = devices.get("deviceName"+deviceNumber);
 		this.osVersion = devices.get("osVersion"+deviceNumber);
-		setup();
 	}
 	
-	public void setup(){
+	public void createDriver(){
 		try	{
-			String port = appiumMan.startAppium(); 			// Start appium server			  
+			port = appiumMan.startAppium(); 			// Start appium server			  
 			  
 			// create appium driver instance
 			DesiredCapabilities capabilities = DesiredCapabilities.android();
@@ -52,7 +52,7 @@ public class BaseTest implements Runnable{
 			//capabilities.setCapability("app", "D:\\work\\Appium-Grid-For-Android\\src\\AndroidCalculator.apk");
 			capabilities.setCapability("udid", deviceId);
 				
-			driver = new AndroidDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
+			this.driver = new AndroidDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
 		}
 		catch(Exception e){
 	    	e.printStackTrace();
@@ -60,10 +60,10 @@ public class BaseTest implements Runnable{
 	}
 	
 	public void start(){
-	   if (t == null){
-	      t = new Thread(this);
-	      t.start ();
-	   }
+		if (t == null){
+		  t = new Thread(this);
+		  t.start ();
+		}
 	}
 
 	public void run(){

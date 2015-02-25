@@ -1,6 +1,7 @@
 package example;
 
 import libs.BaseTest;
+
 import org.openqa.selenium.By;
 
 
@@ -33,6 +34,7 @@ public class GmailExmaple extends BaseTest{
 	}
 	
 	public void run(){
+		createDriver();
 		login();
 	}
 	
@@ -49,6 +51,7 @@ public class GmailExmaple extends BaseTest{
 		// Create threads for each connected devices
 		for(int i=0;i<totalDevices;i++)
 			threads[i] = new GmailExmaple(i);
+		
 		
 		// Start running execution on each device
 		for(int i=0;i<totalDevices;i++)
