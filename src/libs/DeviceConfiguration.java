@@ -12,7 +12,9 @@ public class DeviceConfiguration {
 	public void startADB() throws Exception{
 		String output = cmd.runCommand("adb start-server");
 		String[] lines = output.split("\n");
-		if(lines[1].equalsIgnoreCase("* daemon started successfully *"))
+		if(lines.length==1)
+			System.out.println("adb service already started");
+		else if(lines[1].equalsIgnoreCase("* daemon started successfully *"))
 			System.out.println("adb service started");
 		else if(lines[0].contains("internal or external command")){
 			System.out.println("adb path not set in system varibale");
