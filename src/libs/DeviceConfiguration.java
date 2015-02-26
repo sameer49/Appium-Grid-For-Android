@@ -6,13 +6,27 @@ import java.util.Map;
 
 public class DeviceConfiguration {
 
-
+	CommandPrompt cmd = new CommandPrompt();
 	Map<String, String> devices = new HashMap<String, String>();
+	
+	public void startADB() throws Exception{
+		String output = cmd.runCommand("adb start-server");
+		String[] lines = output.split("\n");
+		if(lines[1].equalsIgnoreCase("* daemon started successfully *"))
+			System.out.println("adb service started");
+		else if(lines[0].contains("internal or external command")){
+			System.out.println("adb path not set in system varibale");
+			System.exit(0);
+		}
+	}
+	
+	public void stopADB() throws Exception{
+		cmd.runCommand("adb kill-server");
+	}
 	
 	public Map<String, String> getDivces() throws Exception	{
 		
-		CommandPrompt cmd = new CommandPrompt();
-		cmd.runCommand("adb devices"); // run command only to start adb tool
+		startADB(); // start adb service
 		String output = cmd.runCommand("adb devices");
 		String[] lines = output.split("\n");
 
@@ -57,7 +71,8 @@ public class DeviceConfiguration {
 	
 //	public static void main(String[] args) throws Exception {
 //		DeviceConfiguration gd = new DeviceConfiguration();
+//		gd.startADB();	
 //		gd.getDivces();
+//		gd.stopADB();
 //	}
-
 }
