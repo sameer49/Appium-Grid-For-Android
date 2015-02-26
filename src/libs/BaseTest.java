@@ -59,6 +59,15 @@ public class BaseTest implements Runnable{
 	    }
 	}
 	
+	public void destroyDriver()
+	{
+		driver.quit();
+		try {
+			deviceConf.stopADB();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void start(){
 		if (t == null){
 		  t = new Thread(this);
@@ -68,4 +77,6 @@ public class BaseTest implements Runnable{
 
 	public void run(){
 	}
+	
+	
 }
