@@ -28,30 +28,34 @@ public class GmailExmaple extends BaseTest{
 	    catch(Exception e){
 	    	e.printStackTrace();
 	    }
+		finally
+		{
+			driver.quit();
+		}
 	}
 	
 	public void run(){
 		createDriver(); // create devices
 		login(); // user function
-		destroyDriver(); // destroy devices
+		//destroyDriver(); // destroy devices
 	}
 	
 	public static void main(String[] args) {
 		// Create object
 		GmailExmaple gmail = new GmailExmaple();
-		
+		gmail.execute();
 		// Get connected device count
-		int totalDevices=gmail.deviceCount;
-		
-		// Initialize threads for each connected devices
-		GmailExmaple[] threads = new GmailExmaple[totalDevices];
-		
-		// Create threads for each connected devices
-		for(int i=0;i<totalDevices;i++)
-			threads[i] = new GmailExmaple(i);
-		
-		// Start running execution on each device
-		for(int i=0;i<totalDevices;i++)
-			threads[i].start();
+//		int totalDevices=gmail.deviceCount;
+//		
+//		// Initialize threads for each connected devices
+//		GmailExmaple[] threads = new GmailExmaple[totalDevices];
+//		
+//		// Create threads for each connected devices
+//		for(int i=0;i<totalDevices;i++)
+//			threads[i] = new GmailExmaple(i);
+//		
+//		// Start running execution on each device
+//		for(int i=0;i<totalDevices;i++)
+//			threads[i].start();
 	}
 }
