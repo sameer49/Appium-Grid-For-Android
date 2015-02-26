@@ -1,12 +1,18 @@
 package libs;
 import io.appium.java_client.android.AndroidDriver;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import example.GmailExmaple;
 
 public class BaseTest implements Runnable{
 	protected AndroidDriver driver;
@@ -78,5 +84,47 @@ public class BaseTest implements Runnable{
 	public void run(){
 	}
 	
-	
+	public  <c> void execute()
+	{
+		Class<?> c;
+		try {
+			int startMethod = 0;
+			// Get extended class name
+			c = Class.forName("example.GmailExmaple");
+			System.out.println("class : "+c);
+			
+			// Get start method
+			Method[] m = Class.forName("example.GmailExmaple").getMethods();
+			System.out.println("methods: "+m.length);
+			for(int i=0;i<m.length;i++)	{
+				//System.out.println("methods: "+m[i]);
+				if(m[i].toString().contains("start")){
+					startMethod=i;
+					break;
+				}
+			}
+			System.out.println("methods: "+m[startMethod]);
+			// get constructor
+			Constructor<?> cons = c.getConstructor(Integer.TYPE);
+			System.out.println("cons: "+cons);
+			
+			System.out.println("deviceCount: "+deviceCount);
+			// Create array of objects
+			Object obj =  Array.newInstance(c, deviceCount);
+			for (int i = 0; i < deviceCount; i++) {
+                Object val = cons.newInstance(i);
+                Array.set(obj, i, val);
+            }
+
+			for (int i = 0; i < deviceCount; i++) {
+                Object val = Array.get(obj, i);
+                m[startMethod].invoke(val);
+            }
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
