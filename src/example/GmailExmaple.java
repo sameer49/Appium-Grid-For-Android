@@ -28,14 +28,12 @@ public class GmailExmaple extends BaseTest{
 	    catch(Exception e){
 	    	e.printStackTrace();
 	    }
-	    finally{
-	    	driver.quit(); 	    	// close driver
-	    }
 	}
 	
 	public void run(){
-		createDriver();
-		login();
+		createDriver(); // create devices
+		login(); // user function
+		destroyDriver(); // destroy devices
 	}
 	
 	public static void main(String[] args) {
@@ -51,7 +49,6 @@ public class GmailExmaple extends BaseTest{
 		// Create threads for each connected devices
 		for(int i=0;i<totalDevices;i++)
 			threads[i] = new GmailExmaple(i);
-		
 		
 		// Start running execution on each device
 		for(int i=0;i<totalDevices;i++)
