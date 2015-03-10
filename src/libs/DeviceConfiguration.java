@@ -34,6 +34,7 @@ public class DeviceConfiguration {
 
 		if(lines.length<=1){
 			System.out.println("No Device Connected");
+			stopADB();
 			System.exit(0);	// exit if no connected devices found
 		}
 		
