@@ -24,14 +24,11 @@ public class GmailExmaple extends BaseTest{
 			Thread.sleep(2000);
 			driver.findElement(By.id("signIn")).click();
 			Thread.sleep(2000);
+			driver.quit();
 	    }
 	    catch(Exception e){
 	    	e.printStackTrace();
 	    }
-		finally
-		{
-			driver.quit();
-		}
 	}
 	
 	public void run(){
