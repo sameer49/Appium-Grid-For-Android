@@ -3,7 +3,6 @@ import io.appium.java_client.android.AndroidDriver;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.HashMap;
@@ -11,8 +10,6 @@ import java.util.Map;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import example.GmailExmaple;
 
 public class BaseTest implements Runnable{
 	protected AndroidDriver driver;
@@ -55,7 +52,25 @@ public class BaseTest implements Runnable{
 			capabilities.setCapability("platformName", "android");
 			capabilities.setCapability(CapabilityType.VERSION, osVersion);
 			capabilities.setCapability(CapabilityType.BROWSER_NAME, "chrome");
-			//capabilities.setCapability("app", "D:\\work\\Appium-Grid-For-Android\\src\\AndroidCalculator.apk");
+			capabilities.setCapability("udid", deviceId);
+				
+			this.driver = new AndroidDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
+		}
+		catch(Exception e){
+	    	e.printStackTrace();
+	    }
+	}
+	
+	public void createDriver(String appPath){
+		try	{
+			port = appiumMan.startAppium(); 			// Start appium server			  
+			  
+			// create appium driver instance
+			DesiredCapabilities capabilities = DesiredCapabilities.android();
+			capabilities.setCapability("deviceName", deviceName);
+			capabilities.setCapability("platformName", "android");
+			capabilities.setCapability(CapabilityType.VERSION, osVersion);
+			capabilities.setCapability("app", appPath);
 			capabilities.setCapability("udid", deviceId);
 				
 			this.driver = new AndroidDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
@@ -89,12 +104,16 @@ public class BaseTest implements Runnable{
 		Class<?> c;
 		try {
 			int startMethod = 0;
+			String className = this.getClass().toString();
+			System.out.println("class : "+className);
+			className = className.replace("class ", "");
+			System.out.println("class : "+className);
 			// Get extended class name
-			c = Class.forName("example.GmailExmaple");
+			c = Class.forName(className);
 			System.out.println("class : "+c);
 			
 			// Get start method
-			Method[] m = Class.forName("example.GmailExmaple").getMethods();
+			Method[] m = c.getMethods();
 			System.out.println("methods: "+m.length);
 			for(int i=0;i<m.length;i++)	{
 				//System.out.println("methods: "+m[i]);
