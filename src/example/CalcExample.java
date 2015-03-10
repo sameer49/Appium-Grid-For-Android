@@ -1,15 +1,18 @@
 package example;
 
+import java.io.File;
+
+import libs.BaseTest;
+
 import org.openqa.selenium.By;
 
-import io.appium.java_client.android.AndroidDriver;
+public class CalcExample extends BaseTest{
 
-public class CalcExample {
-
-	AndroidDriver driver;
+	public CalcExample(){
+	}
 	
-	public CalcExample(AndroidDriver driver) {
-		this.driver=driver;
+	public CalcExample(int deviceNum) {
+		super(deviceNum);
 	}
 	
 	public void performOperations() {
@@ -23,17 +26,24 @@ public class CalcExample {
 			driver.findElement(By.id("com.android2.calculator3:id/equal")).click();
 			String num = driver.findElement(By.xpath("//android.widget.EditText[@index=0]")).getText();
 			System.out.println("Result : "+num);
-			Thread.sleep(2000);
+			driver.closeApp();
 	    }
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace();
 	    }
-	    finally
-	    {
-	    	// close driver
-	    	driver.closeApp();
-	    }
+	}
+	
+	public void run(){
+		File app = new File("src/example/AndroidCalculator.apk");
+		String appPath = app.getAbsolutePath();
+		createDriver(appPath); // create devices
+		performOperations(); // user function
 	}
 
+	public static void main(String[] args) {
+		// Create object
+		CalcExample calc = new CalcExample();
+		calc.execute();
+	}
 }
