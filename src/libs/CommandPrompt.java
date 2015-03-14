@@ -1,5 +1,7 @@
 package libs;
-
+/**
+ * Command Prompt - this class contains method to run windows and mac commands  
+ */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +10,11 @@ public class CommandPrompt {
 	
 	Process p;
 	ProcessBuilder builder;
+	
+	/**
+	 * This method run command on windows and mac
+	 * @param command to run  
+	 */
 	public String runCommand(String command) throws InterruptedException, IOException
 	{
 		String os = System.getProperty("os.name");

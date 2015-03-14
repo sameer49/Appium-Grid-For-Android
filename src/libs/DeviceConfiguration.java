@@ -3,12 +3,17 @@ package libs;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * DeviceConfiguration - this class contains methods to start adb server, to get connected devices and their information.   
+ */
 public class DeviceConfiguration {
 
 	CommandPrompt cmd = new CommandPrompt();
 	Map<String, String> devices = new HashMap<String, String>();
 	
+	/**
+	 * This method start adb server
+	 */
 	public void startADB() throws Exception{
 		String output = cmd.runCommand("adb start-server");
 		String[] lines = output.split("\n");
@@ -22,10 +27,17 @@ public class DeviceConfiguration {
 		}
 	}
 	
+	/**
+	 * This method stop adb server
+	 */
 	public void stopADB() throws Exception{
 		cmd.runCommand("adb kill-server");
 	}
 	
+	/**
+	 * This method return connected devices
+	 * @return hashmap of connected devices information
+	 */
 	public Map<String, String> getDivces() throws Exception	{
 		
 		startADB(); // start adb service
