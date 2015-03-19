@@ -20,6 +20,7 @@ Just plug your android devices to machine and run tests.
 - <code> info: Welcome to Appium v1.3.5 (REV a124a15677e26b33db16e81c4b3b34d9c6b8cac9) </code>
 - <code> info: Appium REST http interface listener started on 0.0.0.0:4723 </code>
 - <code> info: Console LogLevel: debug </code>
+- For Mac download [Mac-Command-Setup.zip](https://github.com/sameer49/Appium-Grid-For-Android/blob/master/Mac-Command-Setup.zip?raw=true) unzip it, open terminal got to download location and run command <code>sh Mac-Command-Setup.sh</code> this will set adb and appium execuatbles into /usr/bin. 
 
 ## Try example
 
