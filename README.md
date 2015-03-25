@@ -35,5 +35,6 @@ Just plug your android devices to machine and run tests.
 - Connect one or more android devices.
 - Run jar <code>java -jar calc_example.jar path/to/AndroidCalculator.apk</code>
 
-Checkout Video
-- [![Appuim-Grid](https://img.youtube.com/vi/DFOX425k8ds/0.jpg)](https://www.youtube.com/watch?v=DFOX425k8ds)
+## Checkout Video
+
+[![Appuim-Grid](https://img.youtube.com/vi/DFOX425k8ds/0.jpg)](https://www.youtube.com/watch?v=DFOX425k8ds)
