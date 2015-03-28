@@ -37,4 +37,6 @@ Just plug your android devices to machine and run tests.
 
 ## Checkout Video
 
-[![Appuim-Grid](https://img.youtube.com/vi/DFOX425k8ds/0.jpg)](https://www.youtube.com/watch?v=DFOX425k8ds)
+<a href="http://www.youtube.com/watch?v=DFOX425k8ds
+" target="_blank"><img src="http://img.youtube.com/vi/DFOX425k8ds/0.jpg" 
+alt="example video" width="240" height="180" border="10" /></a>
