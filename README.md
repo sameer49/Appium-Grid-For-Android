@@ -2,6 +2,10 @@
 Allows you to run automation test on multiple android devices (Real/Emulator) simultaneously.
 Just plug your android devices to machine and run tests.
 
+<a href="http://www.youtube.com/watch?v=DFOX425k8ds
+" target="_blank"><img src="http://img.youtube.com/vi/DFOX425k8ds/0.jpg" 
+alt="example video" width="240" height="180" border="10" /></a>
+
 ## Requirements:
 - Java
 - Nodejs
@@ -34,9 +38,3 @@ Just plug your android devices to machine and run tests.
 - Download the [AndroidCalculator.apk](https://github.com/sameer49/Appium-Grid-For-Android/blob/examples/src/example/AndroidCalculator.apk?raw=true)
 - Connect one or more android devices.
 - Run jar <code>java -jar calc_example.jar path/to/AndroidCalculator.apk</code>
-
-## Checkout Video
-
-<a href="http://www.youtube.com/watch?v=DFOX425k8ds
-" target="_blank"><img src="http://img.youtube.com/vi/DFOX425k8ds/0.jpg" 
-alt="example video" width="240" height="180" border="10" /></a>
