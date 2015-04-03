@@ -18,7 +18,7 @@ public class AppiumManager {
 	}
 	
 	/**
-	 * start appium with modified arguments : appium port, chrome port, and bootstap port
+	 * start appium with auto generated ports : appium port, chrome port, and bootstap port
 	 */
 	public String startAppium()throws Exception
 	{
@@ -31,6 +31,12 @@ public class AppiumManager {
 		System.out.println(command);
 		String output = cp.runCommand(command);
 		System.out.println(output);
+		
+		if(output.contains("not"))
+		{
+			System.out.println("\nAppium is not installed");
+			System.exit(0);
+		}
 		return port;
 	}
 	
