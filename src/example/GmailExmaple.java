@@ -23,7 +23,7 @@ public class GmailExmaple extends BaseTest{
 			driver.findElement(By.id("Passwd")).sendKeys("test");
 			Thread.sleep(2000);
 			driver.findElement(By.id("signIn")).click();
-			Thread.sleep(2000);
+			Thread.sleep(2000); 
 			driver.quit();
 	    }
 	    catch(Exception e){
@@ -40,19 +40,19 @@ public class GmailExmaple extends BaseTest{
 	public static void main(String[] args) {
 		// Create object
 		GmailExmaple gmail = new GmailExmaple();
-		gmail.execute();
+
 		// Get connected device count
-//		int totalDevices=gmail.deviceCount;
-//		
-//		// Initialize threads for each connected devices
-//		GmailExmaple[] threads = new GmailExmaple[totalDevices];
-//		
-//		// Create threads for each connected devices
-//		for(int i=0;i<totalDevices;i++)
-//			threads[i] = new GmailExmaple(i);
-//		
-//		// Start running execution on each device
-//		for(int i=0;i<totalDevices;i++)
-//			threads[i].start();
+		int totalDevices=gmail.deviceCount;
+		
+		// Initialize threads for each connected devices
+		GmailExmaple[] threads = new GmailExmaple[totalDevices];
+		
+		// Create threads for each connected devices
+		for(int i=0;i<totalDevices;i++)
+			threads[i] = new GmailExmaple(i);
+		
+		// Start running execution on each device
+		for(int i=0;i<totalDevices;i++)
+			threads[i].start();
 	}
 }
