@@ -34,7 +34,7 @@ alt="example video" width="240" height="180" border="10" /></a>
 - Run jar <code>java -jar gmail_example.jar</code>
 
 ### To run app
-- Download the [calc_example.jar](https://github.com/sameer49/Appium-Grid-For-Android/blob/examples/calc_example.jar?raw=true)
+- Download the [calc_example.jar](https://github.com/sameer49/Appium-Grid-For-Android/blob/examples/AndroidCalculator.apk?raw=true)
 - Download the [AndroidCalculator.apk](https://github.com/sameer49/Appium-Grid-For-Android/blob/examples/src/example/AndroidCalculator.apk?raw=true)
 - Connect one or more android devices.
 - Run jar <code>java -jar calc_example.jar path/to/AndroidCalculator.apk</code>
