@@ -8,7 +8,7 @@ alt="example video" width="240" height="180" border="10" /></a>
 
 ## Requirements:
 - Java
-- Nodejs
+- Nodejs <a href="http://blog.nodejs.org/2014/10/23/node-v0-10-33-stable/" target="_blank">(v0.10.33)</a>
 - Android SDK
 
 ## Setup
